@@ -14,3 +14,84 @@ Fatal error : Using $this when not in object context in var/www/html/test_core/s
 Notes
 How to call static method
 classname::method();
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class talk {
+	public static $comm = 'hello';
+
+	public static function hi() {
+		$this->comm;
+	}
+	public static function bye() {
+		echo 'bye';
+	}
+}
+
+talk::hi();
+
+Fatal error: Uncaught Error: Using $this when not in object context
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class talk {
+	public $comm = 'hello';
+
+	public static function hi() {
+		echo self::$comm;
+	}
+	public static function bye() {
+		echo 'bye';
+	}
+}
+
+talk::hi();
+
+Fatal error: Uncaught Error: Access to undeclared static property: talk::$comm
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class talk {
+	public static $comm = 'hello';
+
+	public static function hi() {
+		echo 'hi';
+	}
+	public static function bye() {
+		echo 'bye';
+	}
+}
+
+talk::$comm;
+
+Output : Nothing because cannot access or display static variables outside class
+
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class talk {
+	public static $name = 'hello';
+
+	public static function hi() {
+		echo 'hi';
+	}
+	public static function bye() {
+		echo 'bye';
+	}
+}
+
+$obj = new talk();
+$obj->$name;
+
+Notice : Undefined variable: name
+Fatal error: Uncaught Error: Cannot access empty property
+
+
