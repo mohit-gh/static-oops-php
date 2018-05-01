@@ -26,3 +26,19 @@ Output : Hello World
 echo foo::$name;
 
 Output : Mohit
+
+<?php
+
+	class foo {
+
+		public static $name = 'Mohit';
+
+		static function hello() {
+			return self::$name;
+		}
+	}
+
+
+echo foo::hello();
+
+Output : Mohit
