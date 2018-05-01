@@ -11,3 +11,6 @@
 echo foo::hello();
 
 Fatal error : Using $this when not in object context in var/www/html/test_core/static.php on line 11
+Notes
+How to call static method
+classname::method();
