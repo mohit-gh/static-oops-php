@@ -1,0 +1,13 @@
+<?php
+
+	class foo {
+
+		public $name = 'Mohit';
+
+		static function hello() {
+			return $this->name;
+		}
+	}
+echo foo::hello();
+
+Fatal error : Using $this when not in object context in var/www/html/test_core/static.php on line 11
