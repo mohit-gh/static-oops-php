@@ -94,4 +94,20 @@ $obj->$name;
 Notice : Undefined variable: name
 Fatal error: Uncaught Error: Cannot access empty property
 
+<?php
+error_reporting(E_ALL);
+ini_set('error_reporting', 1);
+
+class foo {
+
+	public static $date_format = 'F jS, Y';
+
+	public static function getDate($unixtimestamp) {
+		return date(self::$date_format, $unixtimestamp);
+	}
+}
+
+echo foo::getDate(time());
+Output : May 1st, 2018
+
 
